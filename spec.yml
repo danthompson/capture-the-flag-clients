@@ -1,0 +1,170 @@
+openapi: 3.0.0
+tags:
+  - name: game
+info:
+  title: Capture the Flag
+  version: 1.0.0
+  description: A friendly game of Capture the Flag
+  license:
+    name: MIT
+  contact:
+    name: Test Double
+    url: 'https://testdouble.com'
+    email: hello@testdouble.com
+servers:
+  - url: 'http://localhost:3000/api'
+    description: Game API (development)
+  - url: 'https://staging.retreat-game.com/api'
+    description: Game API (staging)
+  - url: 'https://retreat-game.com/api'
+    description: Game API (production)
+paths:
+  /moves:
+    post:
+      summary: Create Move
+      operationId: post-moves
+      tags:
+        - game
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  player:
+                    $ref: '#/components/schemas/Player'
+                  flag:
+                    $ref: '#/components/schemas/Flag'
+                  opponents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Player'
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/Error'
+      description: Create a player move
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - north
+              - east
+              - west
+              - south
+          in: query
+          name: direction
+          description: The direction to move
+          required: true
+  /player:
+    get:
+      summary: Get Player
+      tags:
+        - game
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  player:
+                    $ref: '#/components/schemas/Player'
+                  flag:
+                    $ref: '#/components/schemas/Flag'
+                  opponents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Player'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/Error'
+      operationId: get-player
+      description: Get player information
+components:
+  schemas:
+    Player:
+      title: Player
+      type: object
+      description: Player information
+      properties:
+        has_peg:
+          type: boolean
+        has_flag:
+          type: boolean
+        is_in_safe_zone:
+          type: boolean
+        x:
+          type: integer
+          format: int32
+        y:
+          type: integer
+          format: int32
+      required:
+        - has_peg
+        - has_flag
+        - is_in_safe_zone
+        - x
+        - y
+    Flag:
+      title: Flag
+      type: object
+      description: Opponent flag information
+      properties:
+        revealed:
+          type: boolean
+        held:
+          type: boolean
+        x:
+          type: integer
+          format: int32
+        y:
+          type: integer
+          format: int32
+      required:
+        - revealed
+        - held
+        - x
+        - y
+    Error:
+      title: Error
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          minimum: 100
+          maximum: 600
+          description: The HTTP status code
+        message:
+          type: string
+          description: The error message indicating what the issue is
+      required:
+        - code
+        - message
+      x-examples:
+        Bad Request:
+          code: 400
+          message: Move not valid
+  securitySchemes:
+    token:
+      type: http
+      scheme: bearer
+      description: Use provided token for all requests
+security:
+  - token: []

@@ -1,0 +1,7 @@
+'!include': ../config.yml
+additionalProperties:
+  gemDescription: Client library of GameAPI
+  gemName: game-client
+  moduleName: GameClient
+generatorName: ruby
+outputDir: clients/ruby/

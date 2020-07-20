@@ -1,0 +1,8 @@
+'!include': ../config.yml
+additionalProperties:
+  moduleName: GameClient
+  projectDescription: Client library of GameAPI
+  projectName: game-client
+  usePromises: true
+generatorName: javascript
+outputDir: clients/javascript/
