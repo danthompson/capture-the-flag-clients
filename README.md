@@ -1,5 +1,4 @@
 # 💚 2020 Test Double Capture the Flag
--
 
 ### GameAPI Clients
 Welcome to the Game Clients. This repository contains clients for our Game API. 
