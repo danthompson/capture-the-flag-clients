@@ -1,0 +1,6 @@
+[submodule "clients/rb"]
+	path = clients/rb
+	url = git@github.com:danthompson/capture-the-flag-client-rb.git
+[submodule "clients/js"]
+	path = clients/js
+	url = git@github.com:danthompson/capture-the-flag-client-js.git

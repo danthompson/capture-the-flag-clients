@@ -4,4 +4,4 @@ additionalProperties:
   gemName: game-client
   moduleName: GameClient
 generatorName: ruby
-outputDir: clients/ruby/
+outputDir: ../capture-the-flag-client-rb/

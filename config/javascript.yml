@@ -5,4 +5,4 @@ additionalProperties:
   projectName: game-client
   usePromises: true
 generatorName: javascript
-outputDir: clients/javascript/
+outputDir: ../capture-the-flag-client-js/
