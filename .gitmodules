@@ -4,3 +4,6 @@
 [submodule "clients/js"]
 	path = clients/js
 	url = git@github.com:danthompson/capture-the-flag-client-js.git
+[submodule "clients/go"]
+	path = clients/go
+	url = git@github.com:danthompson/capture-the-flag-client-go.git
