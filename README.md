@@ -16,6 +16,11 @@ The package is hosted in a git repository so you will need to install from Git. 
 
     npm install danthompson/capture-the-flag-client-js --save
 
+##### - Go -
+The module is hosted in a git repository so you will need to install from Git. Run the following in your shell:
+
+    go get -u github.com/danthompson/capture-the-flag-client-go
+
 
 **Note:**
 
