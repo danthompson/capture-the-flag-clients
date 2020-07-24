@@ -1,0 +1,5 @@
+'!include': ../config.yml
+additionalProperties:
+  packageName: game_client
+generatorName: go
+outputDir: ../capture-the-flag-client-go/
