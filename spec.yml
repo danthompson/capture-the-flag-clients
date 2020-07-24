@@ -103,6 +103,8 @@ components:
       type: object
       description: Player information
       properties:
+        name:
+          type: string
         has_peg:
           type: boolean
         has_flag:
@@ -116,6 +118,7 @@ components:
           type: integer
           format: int32
       required:
+        - name
         - has_peg
         - has_flag
         - is_in_safe_zone
